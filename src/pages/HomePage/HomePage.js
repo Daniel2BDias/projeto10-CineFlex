@@ -49,8 +49,8 @@ const PageContainer = styled.div`
     margin-top: 30px;
     padding-top: 70px;
     img {
-        height: 500px;
-        width: 500px;
+        height: 80%;
+        width: 80%;
     }
 `
 const ListContainer = styled.div`
