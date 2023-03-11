@@ -10,10 +10,6 @@ export default function SeatsPage() {
 const { idSessao, filme } = useParams();
 const [assentos, setAssentos] = useState(undefined);
 
-const selected = () => {
-
-}
-
 useEffect(() => {
     const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`);
     promise.then(res => setAssentos(res.data))
@@ -26,7 +22,9 @@ if(assentos === undefined) {
     )
 }
 
-console.log(assentos);
+const reserva = (e) => {
+    e.preventDefault();
+}
 
     return (
         <PageContainer>
@@ -34,7 +32,7 @@ console.log(assentos);
 
             <SeatsContainer>
                 {assentos.seats.map(s => 
-                    <SeatItem cor={s.isAvailable}>{s.name}</SeatItem>    
+                    <SeatItem key={s.name} cor={s.isAvailable}>{s.name}</SeatItem>    
                 )}
             </SeatsContainer>
 
@@ -53,14 +51,14 @@ console.log(assentos);
                 </CaptionItem>
             </CaptionContainer>
 
-            <FormContainer>
-                Nome do Comprador:
-                <input placeholder="Digite seu nome..." />
+            <FormContainer onSubmit={() => reserva()}>
+                <label htmlFor="nome">Nome do Comprador:</label>
+                <input placeholder="Digite seu nome..." id="nome" required/>
 
-                CPF do Comprador:
-                <input placeholder="Digite seu CPF..." />
+                <label htmlFor="cpf">CPF do Comprador:</label>
+                <input placeholder="Digite seu CPF..." id="cpf" required/>
 
-                <button>Reservar Assento(s)</button>
+                <button type="submit">Reservar Assento(s)</button>
             </FormContainer>
 
             <FooterContainer>
@@ -88,6 +86,10 @@ const PageContainer = styled.div`
     margin-top: 30px;
     padding-bottom: 120px;
     padding-top: 70px;
+    img {
+        height: 80%;
+        width: 80%;
+    }
 `
 const SeatsContainer = styled.div`
     width: 330px;
@@ -98,7 +100,7 @@ const SeatsContainer = styled.div`
     justify-content: center;
     margin-top: 20px;
 `
-const FormContainer = styled.div`
+const FormContainer = styled.form`
     width: calc(100vw - 40px); 
     display: flex;
     flex-direction: column;
@@ -120,8 +122,8 @@ const CaptionContainer = styled.div`
     margin: 20px;
 `
 const CaptionCircle = styled.div`
-    border: 1px solid ${props => props.border};         // Essa cor deve mudar
-    background-color: ${props => props.background};    // Essa cor deve mudar
+    border: 1px solid ${props => props.border};
+    background-color: ${props => props.background};
     height: 25px;
     width: 25px;
     border-radius: 25px;
