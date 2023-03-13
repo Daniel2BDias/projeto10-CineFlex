@@ -15,7 +15,7 @@ export default function SuccessPage({info}) {
 
             <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
-                {info.id.map(id => <p key={id} >Assento {id}</p>)}
+                {info.id.sort((a, b) => a-b).map(id => <p key={id} >Assento {id}</p>)}
             </TextContainer>
 
             <TextContainer data-test="client-info">
