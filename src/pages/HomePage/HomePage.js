@@ -9,7 +9,7 @@ export default function HomePage() {
 
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies");
-        promise.then(res => {setFilmes(res.data); console.log(res.data)});
+        promise.then(res => setFilmes(res.data));
         promise.catch(err => setFilmes(err.response.data));
     }
     , []);
@@ -72,5 +72,9 @@ const MovieContainer = styled.div`
     img {
         width: 130px;
         height: 190px;
+    }
+
+    &:active {
+        transform: scale(0.97);
     }
 `

@@ -15,7 +15,7 @@ const [assento, setAssento] = useState([]);
 const [nome, setNome] = useState("");
 const [cpf, setCpf] = useState("");
 const req = {
-    ids: [ids],
+    ids: ids,
     name: nome,
     cpf: cpf
 }
@@ -34,10 +34,10 @@ if(assentos === undefined) {
 
 const reserva = (e) => {
     e.preventDefault();
-    info({title: assentos.movie.title, day: assentos.day.date, name: assentos.name, id: [assento], nome, cpf})
+    info({title: assentos.movie.title, day: assentos.day.date, name: assentos.name, id: assento, nome, cpf})
     const promise = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", req);
     promise.then(navigate("/sucesso"));
-    promise.catch(err => console.log(err));
+    promise.catch(err => console.log(err.response.data));
 }
 
     return (
@@ -46,7 +46,7 @@ const reserva = (e) => {
 
             <SeatsContainer>
                 {assentos.seats.map(s => 
-                    <SeatItem key={s.name} id={s.id} ids={ids} setids={setIds} setassento={setAssento} cor={s.isAvailable}>{s.name}</SeatItem>    
+                    <SeatItem key={s.name} id={s.id} ids={ids} setids={setIds} assento={assento} setassento={setAssento} cor={s.isAvailable}>{s.name}</SeatItem>    
                 )}
             </SeatsContainer>
 
@@ -126,6 +126,10 @@ const FormContainer = styled.form`
     }
     input {
         width: calc(100vw - 60px);
+    }
+
+    button:active {
+        transform: scale(0.97);
     }
 `
 const CaptionContainer = styled.div`

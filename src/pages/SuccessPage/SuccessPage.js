@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export default function SuccessPage({info}) {
-    console.log(info);
+    
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
@@ -45,6 +45,15 @@ const PageContainer = styled.div`
     button {
         margin-top: 50px;
     }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    button:active {
+        transform: scale(0.97);
+    }
+    
     h1 {
         font-family: 'Roboto';
         font-style: normal;

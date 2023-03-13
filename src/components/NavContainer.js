@@ -33,8 +33,8 @@ const Navcontainer = styled.div`
         color: #E8833A;
     }
 
-    h1 {
-
+    a:active {
+        transform: scale(0.8);
     }
 
     img {
@@ -43,6 +43,7 @@ const Navcontainer = styled.div`
         height: 30px;
         width: 30px;
     }
+    
     div {
         width: 33px;
     }

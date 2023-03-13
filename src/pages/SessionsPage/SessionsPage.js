@@ -10,7 +10,7 @@ export default function SessionsPage() {
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`);
-        promise.then(res => {setSessoes(res.data); console.log(res.data)});
+        promise.then(res => setSessoes(res.data));
         promise.catch(err => setSessoes(err.response.data));
     }, []);
 
@@ -98,6 +98,16 @@ const ButtonsContainer = styled.div`
     }
     a {
         text-decoration: none;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    button:active{
+        transform: scale(0.97);
     }
 `
 const FooterContainer = styled.div`
