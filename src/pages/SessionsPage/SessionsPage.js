@@ -27,7 +27,7 @@ export default function SessionsPage() {
                 {sessoes.days.map(s => 
                     <SessionContainer data-test="movie-day">
                     {s.weekday} - {s.date}
-                        <Sections key={s.id} times={s.showtimes}></Sections>
+                        <Sections data-test="showtime" key={s.id} times={s.showtimes}></Sections>
                     </SessionContainer>
                 )}
             </div>
