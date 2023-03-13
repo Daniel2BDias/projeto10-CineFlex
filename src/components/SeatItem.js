@@ -1,17 +1,19 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const SeatItem = ({ cor, children }) => {
-
+const SeatItem = ({ cor, children, ids, setids, id, setassento}) => {
     const [selecionado, setSelecionado] = useState(false);
 
     const selecionou = (s) => {
         if(cor === false){return};
+        
         setSelecionado(!s)
+        setids([...ids, id]);
+        setassento(children);
     }
     
     return (
-        <SeatItemCss onClick={() => selecionou(selecionado, cor)} select={selecionado} cor={cor}>{children}</SeatItemCss>
+        <SeatItemCss data-test="seat" onClick={() => selecionou(selecionado, cor)} select={selecionado} cor={cor}>{children}</SeatItemCss>
     )
 }
 
