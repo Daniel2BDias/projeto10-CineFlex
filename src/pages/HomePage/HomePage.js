@@ -21,7 +21,7 @@ export default function HomePage({home, setHome}) {
     }
 
     function h () {
-        setHome(!home);
+        setHome(false);
     }
 
     return (

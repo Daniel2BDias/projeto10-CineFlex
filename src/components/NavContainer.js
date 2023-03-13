@@ -5,7 +5,7 @@ import back from "../assets/back.png";
 export default function NavContainer({home, setHome}) {
 
     function h () {
-        setHome(!home);
+        setHome(true);
     }
 
     return (
