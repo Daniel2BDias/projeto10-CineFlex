@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import back from "../assets/back.png";
 
-export default function NavContainer() {
+export default function NavContainer({home, setHome}) {
 
-    const navigate = useNavigate();
+    function h () {
+        setHome(!home);
+    }
+
     return (
         <Navcontainer>
-            <Link data-test="go-home-header-btn" to="/"><img src={back}/></Link>
+            {!home ? <Link data-test="go-home-header-btn" to="/"><img src={back} onClick={h}/></Link> : <div></div>}
             
             <h1>CINEFLEX</h1>
             <div></div>

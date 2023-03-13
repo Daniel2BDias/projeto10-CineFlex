@@ -72,7 +72,7 @@ const reserva = (e) => {
                 <label htmlFor="cpf">CPF do Comprador:</label>
                 <input data-test="client-cpf" placeholder="Digite seu CPF..." id="cpf" value={cpf} onChange={e => setCpf(e.target.value)} required/>
 
-                <button data-test="book-seat-btn"type="submit">Reservar Assento(s)</button>
+                <button data-test="book-seat-btn" type="submit">Reservar Assento(s)</button>
             </FormContainer>
 
             <FooterContainer data-test="footer">

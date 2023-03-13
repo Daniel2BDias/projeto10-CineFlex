@@ -9,13 +9,14 @@ import { useState } from "react";
 export default function App() {
 
     const [infoSessao, setInfoSessao] = useState({});
+    const [home, setHome] = useState(true);
 
     return (
         
         <BrowserRouter>
-           <NavContainer />
+           <NavContainer home={home} setHome={setHome}/>
             <Routes>
-                <Route path="/" element={ <HomePage /> }></Route>
+                <Route path="/" element={ <HomePage home={home} setHome={setHome}/> }></Route>
                 <Route path="/assentos/:idSessao/sessoes/:idFilme" element={ <SeatsPage info={setInfoSessao} /> }></Route>
                 <Route path="/sessoes/:idFilme" element={ <SessionsPage /> }></Route>
                 <Route path="/sucesso" element={ <SuccessPage info={infoSessao} /> }></Route>

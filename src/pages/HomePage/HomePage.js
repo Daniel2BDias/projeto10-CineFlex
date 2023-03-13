@@ -4,13 +4,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import loading from "../../assets/loading.svg";
 
-export default function HomePage() {
+export default function HomePage({home, setHome}) {
     const [filmes, setFilmes] = useState(undefined);
 
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies");
         promise.then(res => setFilmes(res.data));
-        promise.catch(err => setFilmes(err.response.data));
+        promise.catch(alert("Erro ao recuperar lista de filmes!"));
     }
     , []);
 
@@ -20,13 +20,17 @@ export default function HomePage() {
         )
     }
 
+    function h () {
+        setHome(!home);
+    }
+
     return (
         <PageContainer>
             Selecione o filme
 
             <ListContainer>
                 {filmes.map(f => (
-                    <MovieContainer key={f.id} data-test="movie">
+                    <MovieContainer onClick={h} key={f.id} data-test="movie">
                     <Link to={`/sessoes/${f.id}`}>
                     <img src={f.posterURL} alt="poster"/>
                     </Link>
