@@ -17,7 +17,7 @@ export default function App() {
            <NavContainer home={home} setHome={setHome}/>
             <Routes>
                 <Route path="/" element={ <HomePage home={home} setHome={setHome}/> }></Route>
-                <Route path="/assentos/:idSessao/sessoes/:idFilme" element={ <SeatsPage info={setInfoSessao} /> }></Route>
+                <Route path="/assentos/:idSessao/sessoes/:idFilme" element={ <SeatsPage info={setInfoSessao} setHome={setHome}/> }></Route>
                 <Route path="/sessoes/:idFilme" element={ <SessionsPage /> }></Route>
                 <Route path="/sucesso" element={ <SuccessPage info={infoSessao} /> }></Route>
             </Routes>

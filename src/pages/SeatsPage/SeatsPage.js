@@ -5,7 +5,7 @@ import axios from "axios";
 import loading from "../../assets/loading.svg";
 import SeatItem from "../../components/SeatItem";
 
-export default function SeatsPage({info}) {
+export default function SeatsPage({info, setHome}) {
 
 const { idSessao, filme } = useParams();
 const [assentos, setAssentos] = useState(undefined);
@@ -34,6 +34,7 @@ if(assentos === undefined) {
 
 const reserva = (e) => {
     e.preventDefault();
+    setHome(true);
     info({title: assentos.movie.title, day: assentos.day.date, name: assentos.name, id: assento, nome, cpf})
     const promise = axios.post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many", req);
     promise.then(navigate("/sucesso"));
