@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import loading from "../../assets/loading.svg";
 import axios from "axios";
 
@@ -52,7 +52,7 @@ const Sections = ({ times }) => {
     return (
         <ButtonsContainer key={times.id}>
             {times.map(t =>
-                <Link to={`/assentos/${t.id}/sessoes/${idFilme}`}>
+                <Link to={`assentos/${t.id}/`}>
                     <button data-test="showtime">{t.name}</button> 
                 </Link>
             )}
