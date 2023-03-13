@@ -132,6 +132,10 @@ const FormContainer = styled.form`
     button:active {
         transform: scale(0.97);
     }
+
+    button:hover {
+        cursor: pointer;
+    }
 `
 const CaptionContainer = styled.div`
     display: flex;
